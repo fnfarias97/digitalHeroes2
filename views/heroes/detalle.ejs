@@ -1,0 +1,19 @@
+<%- include('../partials/head.ejs') %>  
+  <%- include('../partials/header.ejs') %> 
+      <h1>Hola!</h1>
+      <h2>Mi nombre es <%= heroe.nombre %>, soy <%= heroe.profesion %>, vengo de <%= heroe.pais %>  y mi reseña es la siguiente:</h2>
+      <div>
+        <img class="mb-4" src="/images/<%= heroe.avatar%>" alt="avatar">
+        <p>
+            <%= heroe.resenia %>
+        </p>
+      </div>
+      <div class="d-flex flex-row">
+        <div>
+            <button onclick="location.href='/heroes/edit/<%= heroe.id %>'" class="btn btn-info">Editar</button>
+        </div>
+        <form class="d-flex flex-start ml-4" action="/heroes/remove/<%= heroe.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger">Borrar</button>
+        </form>
+      </div>
+  <%- include('../partials/footer.ejs') %> 

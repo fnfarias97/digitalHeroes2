@@ -1,0 +1,20 @@
+<%- include('../partials/head.ejs') %>  
+    <%- include('../partials/header.ejs') %> 
+        <h1 class="Jumbotron mb-4">Crea tu propio Heroe:</h1>
+        <form action="/heroes/create" method="POST" class="w-50" enctype="multipart/form-data">
+            <div class="d-flex flex-column input-group input-group-lg">
+                <input class="form-control-lg mt-4" type="text" name="nombre" placeholder="Ingrese su nombre..." required>
+                <input class="form-control-lg mt-4" type="text" name="profesion" placeholder="Ingrese su profesión..." required>
+                <input class="form-control-lg mt-4" type="text" name="pais" placeholder="Ingrese su país..." required>
+                <div class="form-group">
+                    <textarea class="form-control-lg rounded-0 mt-4" name ="resenia" rows="3" style="height:100%; width:100%" placeholder="Escriba una breve reseña..." required></textarea>
+                </div>
+                <div>
+                    <label for="fileUpload">Subí una foto de tu heroe</label>
+                    <input type="file" name="avatar" id="fileUpload">
+                </div>
+            </div>
+            
+            <button class="btn btn-primary btn-lg mt-4 w-100" type="submit">Enviar</button>
+        </form>
+    <%- include('../partials/footer.ejs') %> 

@@ -1,0 +1,22 @@
+<%- include('../partials/head.ejs') %>  
+    <%- include('../partials/header.ejs') %> 
+      <ul clas="list-group list-group-flush">
+        <h1 class="Jumbotron text-center list-group-item list-group-item-action active p-3">Lista de Heroes:</h1>
+        <% for (heroe of heroes){ %>
+          <li class="list-group-item list-group-item-action p-4 d-flex align-items-center">
+            <div>
+              <a href="/heroes/<%= heroe.id %>"><h2><strong><%= heroe.nombre %></strong></h2></a> <br>
+              <h3><strong>Profesión:</strong> <%= heroe.profesion %> </h3>
+              <h3><strong>País:</strong> <%= heroe.pais %> </h3>
+              <h3><strong>Detalle:</strong> <%= heroe.resenia %> </h3>
+            </div>
+            <div class="d-flex flex-column">
+              <button onclick="location.href='/heroes/edit/<%= heroe.id %>'" class="btn btn-info">Editar</button>
+              <form action="/heroes/remove/<%= heroe.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger mt-4">Borrar</button>
+              </form>
+            </div>
+          </li>
+        <% } %> 
+      </ul>
+    <%- include('../partials/footer.ejs') %> 
