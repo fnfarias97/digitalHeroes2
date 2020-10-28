@@ -2,7 +2,15 @@ const heroes = require('../data/heroes');
 const fs = require('fs');
 
 module.exports = {
-    index : (req, res, next) => res.render('heroes/heroes', { title: 'Heroes Digitales | Heroes', heroes}),
+    index : (req, res, next) => {
+        filteredHeroes = [...heroes];
+
+        if (req.query.nombre) {
+            filteredHeroes = heroes.filter(e => e.nombre.toLowerCase().includes(req.query.nombre.toLowerCase()));
+        }
+        console.log(req.query);
+        res.render('heroes/heroes', { title: 'Heroes Digitales | Heroes', heroes:filteredHeroes})
+    },
 
     profesion :  (req, res, next) => {
         let heroe = heroes.find(e => e.id == req.params.id);
